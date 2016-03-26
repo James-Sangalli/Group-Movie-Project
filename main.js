@@ -6,7 +6,7 @@ $(document).ready(function() {
   //Tells jquery to wait until dom has loaded before loading jquery
   $("#button").click(searchActor)
   $("#searchInput").on("keydown",function(e) {
-    if (e.keyCode === 13){
+    if (e.which === 13){
       searchActor()
     }
   })
