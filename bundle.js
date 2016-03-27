@@ -14,13 +14,18 @@ $(document).ready(function() {
 function searchActor() {
     var rawInput = $("#searchInput").val().toString();
     getMovieByActor(rawInput, function(err, data){
-      if (data.body.results.length > 0 && data.body.results[1].adult == false) {
-        var movies = data.body.results[0].known_for
-        renderMovieResults(movies)
-        renderActor(data.body.results[0])
-      } else {
+      if (data.body.results.length > 0) {
+          var movies = data.body.results[0].known_for
+          renderMovieResults(movies)
+          renderActor(data.body.results[0])
+        if(data.body.results[1].adult == true){
+          alert("Warning, adult content found!")
+        }
+
+      }
+       else {
         $("#face").html("")
-        $("#results").html("<br>Sorry, we could not find the actor you search for or the content was inappropriate!")
+        $("#results").html("<br>Sorry, we could not find the actor you search for!")
       }
 
     })
