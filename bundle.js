@@ -31,6 +31,7 @@ function searchActor() {
     })
   }
 
+
   function renderMovieResults(movies) {
 
     document.getElementById('results').innerHTML = ""
