@@ -11,17 +11,16 @@ $(document).ready(function() {
       searchActor()
     }
   })
-
-  function searchActor() {
+function searchActor() {
     var rawInput = $("#searchInput").val().toString();
     getMovieByActor(rawInput, function(err, data){
-      if (data.body.results.length > 0) {
+      if (data.body.results.length > 0 && data.body.results.adult == false) {
         var movies = data.body.results[0].known_for
         renderMovieResults(movies)
         renderActor(data.body.results[0])
       } else {
         $("#face").html("")
-        $("#results").html("<br>Sorry, we could not find the actor you search for!")
+        $("#results").html("<br>Sorry, we could not find the actor you search for or the content was inappropriate!")
       }
 
     })
